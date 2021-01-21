@@ -3,9 +3,10 @@
   "main": "build/index.js",
   "scripts": {
     "start": "node build/index.js",
-    "build": "tsc",
+    "build": "tsc && cd client && yarn build && npx next export && cp -r ./out ../build/client",
     "lint": "eslint . --ext .ts",
-    "dev": "tsc && yarn start"
+    "dev": "tsc && yarn start",
+    "postinstall": "cd client && yarn"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",
