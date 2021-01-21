@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import SignInButton from '../components/SignInButton';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -11,11 +12,12 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://canvas.aniruddha.net">Canvas!</a>
         </h1>
 
         <p className={styles.description}>
-          Get started by editing <code className={styles.code}>pages/index.js</code>
+          <br />
+          <SignInButton />
         </p>
 
         <div className={styles.grid}>
