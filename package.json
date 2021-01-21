@@ -5,7 +5,7 @@
     "start": "node build/index.js",
     "build": "tsc && cd client && yarn build && npx next export && cp -r ./out ../build/client",
     "lint": "eslint . --ext .ts",
-    "dev": "tsc && yarn start",
+    "dev": "yarn build && yarn start",
     "postinstall": "cd client && yarn"
   },
   "devDependencies": {
