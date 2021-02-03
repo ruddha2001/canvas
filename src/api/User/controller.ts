@@ -1,4 +1,6 @@
+import database from '../../loaders/database';
 import LoggerInstance from '../../loaders/logger';
+import { User } from '../Shared/customTypes';
 
 const { google } = require('googleapis');
 
@@ -23,7 +25,7 @@ export const setToken = async (authObject: any) => {
     oauth2Client.setCredentials(tokens);
     return await getUserProfile();
   } catch (error) {
-    if (error.message === 'Could not get user profile') throw error;
+    if (error.message === 'Could not get/create user profile') throw error;
     throw Error('Could not set token');
   }
 };
@@ -35,9 +37,27 @@ const getUserProfile = async () => {
       version: 'v2',
     });
     let res = await oauth2.userinfo.get();
+    const dbResponse = await (await database()).collection('users').findOne({ email: res.data.email });
+    if (dbResponse === null) await createLocalUserProfile(res.data);
     return res.data;
   } catch (error) {
     LoggerInstance.error(error);
-    throw Error('Could not get user profile');
+    throw Error('Could not get/create user profile');
+  }
+};
+
+const createLocalUserProfile = async (data: any) => {
+  try {
+    const { email, name, picture } = data;
+    const newUser: User = {
+      name: name,
+      email: email,
+      picture: picture,
+      moods: [],
+    };
+    await (await database()).collection('users').insertOne(newUser);
+  } catch (error) {
+    LoggerInstance.error(error);
+    throw Error('Could not create a local user profile');
   }
 };
