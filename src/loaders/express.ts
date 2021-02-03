@@ -5,6 +5,7 @@ import express, { Request, Response } from 'express';
 import helmet from 'helmet';
 import config from '../config';
 import routes from '../api';
+import morgan from 'morgan';
 
 export default ({ app }: { app: express.Application }): void => {
   /**
@@ -26,6 +27,9 @@ export default ({ app }: { app: express.Application }): void => {
 
   // It shows the real origin IP in the heroku or Cloudwatch logs
   app.enable('trust proxy');
+
+  // Middleware to track user requests
+  app.use(morgan('short'));
 
   // Middleware that helps secure app by setting headers
   app.use(helmet());
