@@ -15,14 +15,14 @@ Please delete options that are not relevant.
 
 # How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
+This PR has been tested using:
 
-- [ ] Test A
-- [ ] Test B
+- [ ] TravisCI on the PR
+- [ ] Cohesive Integration test prior to the PR
 
 **Test Configuration**:
 
-- Firmware version:
+- Platform version: Node.js LTS (14.x)
 - Hardware:
 - Toolchain:
 - SDK:
