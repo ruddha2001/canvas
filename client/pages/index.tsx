@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import SignInButton from '../components/SignInButton';
+import SignInButton from '../components/Sign In/SignInButton';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -36,8 +36,7 @@ export default function Home() {
             <p>Review our set of calming videos and music.</p>
           </span>
 
-          <span className={styles.card}
-          >
+          <span className={styles.card}>
             <h3>Free Forever 🛡️</h3>
             <p>Private, safe and free forever without any ads.</p>
           </span>
@@ -45,10 +44,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <span
-        >
-          Crafted with ❤️ by Team Puzzles
-        </span>
+        <span>Crafted with ❤️ by Team Puzzles</span>
       </footer>
     </div>
   );
