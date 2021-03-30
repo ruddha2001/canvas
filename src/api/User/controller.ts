@@ -1,4 +1,5 @@
 import database from '../../loaders/database';
+import { sign } from 'jsonwebtoken';
 import LoggerInstance from '../../loaders/logger';
 import { User } from '../Shared/customTypes';
 
@@ -60,4 +61,8 @@ const createLocalUserProfile = async (data: any) => {
     LoggerInstance.error(error);
     throw Error('Could not create a local user profile');
   }
+};
+
+export const generateJwt = (email: string) => {
+  return sign({ email }, process.env.JWT_SECRET);
 };

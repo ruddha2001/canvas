@@ -11,6 +11,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <img src="/canvas.png" className="w-24" />
         <h1 className={styles.title}>
           Welcome to <a href="https://canvas.aniruddha.net">Canvas!</a>
         </h1>

@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import LoggerInstance from '../../loaders/logger';
-import { generateLoginUrl, setToken } from './controller';
+import { generateJwt, generateLoginUrl, setToken } from './controller';
 
 const router = Router();
 
@@ -18,7 +18,7 @@ const loginHandler = (req: Request, res: Response) => {
 const authCodeHandler = async (req: Request, res: Response) => {
   try {
     let data = await setToken(req.query);
-    res.send(`Hi ${data.name}! Welcome to Canvas`);
+    res.json({ success: true, token: generateJwt(data.email) });
   } catch (error) {
     LoggerInstance.error(error);
     res.json({ status: 500, message: error.message });
