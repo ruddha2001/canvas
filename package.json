@@ -3,10 +3,9 @@
   "main": "build/index.js",
   "scripts": {
     "start": "node build/index.js",
-    "build": "tsc && cd client && yarn build && npx next export && cp -r ./out ../build/client",
+    "build": "tsc",
     "lint": "eslint . --ext .ts",
-    "dev": "yarn build && yarn start",
-    "postinstall": "cd client && yarn",
+    "dev": "tsc-watch --onSuccess 'node ./build/index.js'",
     "test": "echo \"Test is working\""
   },
   "devDependencies": {
@@ -22,7 +21,6 @@
     "typescript": "^4.0.5"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
