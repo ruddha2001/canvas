@@ -63,6 +63,6 @@ const createLocalUserProfile = async (data: any) => {
   }
 };
 
-export const generateJwt = (email: string) => {
-  return sign({ email }, process.env.JWT_SECRET);
+export const generateJwt = (email: string, name: string) => {
+  return sign({ email, name }, process.env.JWT_SECRET);
 };

@@ -41,11 +41,16 @@ export default ({ app }: { app: express.Application }): void => {
   app.use(bodyParser.json());
 
   // Serve the client
-  app.use(express.static(join(__dirname, '..', '..', 'build', 'client')));
-  app.get('/', (req: Request, res: Response) => {
-    res.sendFile(join(__dirname, '..', '..', 'build', 'client', 'index.html'));
-  });
+  // app.use(express.static(join(__dirname, '..', '..', 'build', 'client')));
+  // app.get('/', (req: Request, res: Response) => {
+  //   res.sendFile(join(__dirname, '..', '..', 'build', 'client', 'index.html'));
+  // });
 
   // Load API routes
   app.use(config.api.prefix, routes());
+
+  // Redirect to index.html for routing
+  // app.get('*', (req: Request, res: Response) => {
+  //   res.sendFile(join(__dirname, '..', '..', 'build', 'client', 'index.html'));
+  // });
 };

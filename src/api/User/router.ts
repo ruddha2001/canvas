@@ -18,7 +18,7 @@ const loginHandler = (req: Request, res: Response) => {
 const authCodeHandler = async (req: Request, res: Response) => {
   try {
     let data = await setToken(req.query);
-    res.json({ success: true, token: generateJwt(data.email) });
+    res.json({ success: true, token: generateJwt(data.email, data.name) });
   } catch (error) {
     LoggerInstance.error(error);
     res.json({ status: 500, message: error.message });
