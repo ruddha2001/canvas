@@ -21,11 +21,12 @@ export default function AccountMenu(props) {
     }
   };
   return (
-    <div className={[props.display, 'border-2 z-50 px-5 py-1 mt-2'].join(' ')}>
+    <div className={[props.opacity, 'border-2 z-50 px-5 py-1 mt-2 bg-white'].join(' ')}>
       {menuItems.map(item => {
         return (
           <p
             className="py-1 text-base md:text-xl cursor-pointer"
+            key={item[0] as string}
             onClick={event => handleOnClickAccountMenuItem(event, item[0])}
           >
             {item[0]} <span className="flex float-right pl-4 md:pl-5">{item[1]}</span>
