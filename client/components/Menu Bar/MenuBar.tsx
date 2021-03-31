@@ -3,11 +3,11 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AccountMenu from './AccountMenu';
 
 export default function MenuBar(props) {
-  const [display, setDisplay] = useState('hidden');
+  const [opacity, setOpacity] = useState('opacity-0');
   const toggleAccountMenu = event => {
     event.preventDefault();
-    if (display === 'block') return setDisplay('hidden');
-    return setDisplay('block');
+    if (opacity === 'opacity-1') return setOpacity('opacity-0');
+    return setOpacity('opacity-1');
   };
   return (
     <>
@@ -23,7 +23,7 @@ export default function MenuBar(props) {
         </p>
       </div>
       <p className="w-max flex float-right pr-3 md:pr-10">
-        <AccountMenu display={display} />
+        <AccountMenu opacity={opacity} />
       </p>
     </>
   );
