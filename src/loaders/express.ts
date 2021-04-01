@@ -37,7 +37,7 @@ export default ({ app }: { app: express.Application }): void => {
 
   // Middleware that transforms the raw string of req.body into json
   app.use(express.json());
-  app.use(express.urlencoded({extended:true}));
+  app.use(express.urlencoded({ extended: true }));
 
   // Load API routes
   app.use(config.api.prefix, routes());

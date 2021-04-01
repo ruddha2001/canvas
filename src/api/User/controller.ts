@@ -67,6 +67,6 @@ export const generateJwt = (email: string) => {
   return sign({ email }, process.env.JWT_SECRET);
 };
 
-export const verifyJwt = (token:string)=>{
-  return verify(token,process.env.JWT_SECRET);
-}
+export const verifyJwt = (token: string) => {
+  return verify(token, process.env.JWT_SECRET);
+};

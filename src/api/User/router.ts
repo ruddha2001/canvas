@@ -7,7 +7,7 @@ const router = Router();
 export const userRouteHandler = () => {
   router.get('/login', loginHandler);
   router.get('/authcode', authCodeHandler);
-  router.post('/verify', jwtVerifyHandler)
+  router.post('/verify', jwtVerifyHandler);
 
   return router;
 };
@@ -22,16 +22,16 @@ const authCodeHandler = async (req: Request, res: Response) => {
     res.json({ success: true, token: generateJwt(data.email), name: data.name.split(' ')[0] });
   } catch (error) {
     LoggerInstance.error(error);
-    res.status(500).json({success:false, message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
 const jwtVerifyHandler = async (req: Request, res: Response) => {
   try {
-    const {token} = req.body;
+    const { token } = req.body;
     res.json({ success: true, payload: verifyJwt(token) });
   } catch (error) {
     LoggerInstance.error(error);
-    res.status(500).json({success:false, message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
