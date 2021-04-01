@@ -10,7 +10,7 @@ export default function index() {
       <MenuBar name="Ruddha" />
       <div></div>
       <div>
-        <div className="grid grid-cols-12 w-full px-3 md:px-10 min-h-full">
+        <div className="grid grid-cols-12 w-full px-3 md:px-10 pt-2 min-h-full">
           <Graph />
           <AddReportPanel />
         </div>

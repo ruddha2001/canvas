@@ -1,5 +1,5 @@
 import database from '../../loaders/database';
-import { sign } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
 import LoggerInstance from '../../loaders/logger';
 import { User } from '../Shared/customTypes';
 
@@ -63,7 +63,10 @@ const createLocalUserProfile = async (data: any) => {
   }
 };
 
-export const generateJwt = (email: string, name: string) => {
-  const nameArray = name.split(' ');
-  return sign({ email, name: nameArray[0] }, process.env.JWT_SECRET);
+export const generateJwt = (email: string) => {
+  return sign({ email }, process.env.JWT_SECRET);
+};
+
+export const verifyJwt = (token: string) => {
+  return verify(token, process.env.JWT_SECRET);
 };
