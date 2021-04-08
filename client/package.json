@@ -16,6 +16,7 @@
     "postcss": "^8.2.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-loader": "^2.4.7",
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.35",
     "@types/react": "^17.0.0",
+    "@types/react-loader": "^2.4.4",
     "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
     "typescript": "^4.2.3"
