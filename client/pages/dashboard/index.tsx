@@ -9,6 +9,7 @@ import { useAuthenticate } from '../../hooks/AuthenticateHook';
 
 export default function index() {
   const [loaded, setLoaded] = useState(false);
+  const [name, setName] = useState(window.localStorage.getItem('name'));
   useEffect(() => {
     if (window.localStorage.getItem('auth') !== 'true') {
       alert('Please login to continue.');
@@ -26,7 +27,7 @@ export default function index() {
   return (
     <div className="w-screen h-screen relative">
       <Loader loaded={loaded}>
-        <MenuBar name="Ruddha" />
+        <MenuBar name={name} />
         <div></div>
         <div>
           <div className="grid grid-cols-12 w-full px-3 md:px-10 min-h-full">

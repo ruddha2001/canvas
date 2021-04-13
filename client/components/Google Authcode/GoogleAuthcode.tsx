@@ -25,6 +25,7 @@ export default function GoogleAuthcode() {
           return setHelp('Please retry or contact me@aniruddha.net for further help');
         }
         window.localStorage.setItem('token', response.data.token);
+        window.localStorage.setItem('name', response.data.name);
         window.localStorage.setItem('auth', 'true');
         window.location.replace('/dashboard');
       });
