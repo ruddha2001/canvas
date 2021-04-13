@@ -12,6 +12,7 @@ export default function AccountMenu(props) {
     switch (item) {
       case 'Log Out':
         window.localStorage.setItem('token', '');
+        window.localStorage.setItem('name', '');
         window.localStorage.setItem('auth', 'false');
         window.location.replace('/');
         break;
