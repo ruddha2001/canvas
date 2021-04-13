@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader';
 import AddReportPanel from '../../components/Add Report/AddReportPanel';
 import Footer from '../../components/Footer/Footer';
+import GenerateReportButton from '../../components/Generate Report Button/GenerateReportButton';
 import Graph from '../../components/Graph/Graph';
 import MenuBar from '../../components/Menu Bar/MenuBar';
 import { useAuthenticate } from '../../hooks/AuthenticateHook';
@@ -32,6 +33,7 @@ export default function index() {
             <Graph />
             <AddReportPanel />
           </div>
+          <GenerateReportButton />
         </div>
         <Footer />
       </Loader>
