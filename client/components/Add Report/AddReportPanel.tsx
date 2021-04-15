@@ -13,7 +13,7 @@ export default function AddReportPanel() {
     <div
       className="col-span-12 lg:col-span-5 mt-2 lg:mt-0 ml-0 lg:ml-1 border border-base-primary rounded lg:rounded-lg bg-base-primary text-white cursor-pointer"
       onClick={() => {
-        window.location.href = 'addreport';
+        window.location.href = '/addreport';
       }}
     >
       <p className="w-full text-center lg:pt-60 lg:text-4xl">Record How You Are Feeling Now</p>
