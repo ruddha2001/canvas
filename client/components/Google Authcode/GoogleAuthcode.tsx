@@ -16,7 +16,7 @@ export default function GoogleAuthcode() {
     axios
       .get(`${BASE_URL}/api/user/authcode?code=${code}`, {
         validateStatus: function (status) {
-          return status >= 200 && status < 500;
+          return status >= 200 && status <= 500;
         },
       })
       .then(response => {
