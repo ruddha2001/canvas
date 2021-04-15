@@ -58,7 +58,7 @@ export default function Feedback() {
       <div className="grid grid-cols-3 md:grid-cols-6 justify-items-center">
         {moodIconData.map(element => {
           return (
-            <div className="my-3 md:my-6">
+            <div className="my-3 md:my-6 cursor-pointer">
               <FontAwesomeIcon
                 icon={element.icon}
                 size={iconSize as SizeProp}
