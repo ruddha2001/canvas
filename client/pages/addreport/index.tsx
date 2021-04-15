@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader';
+import AddReport from '../../components/Add Report/AddReport';
 import Footer from '../../components/Footer/Footer';
 import MenuBar from '../../components/Menu Bar/MenuBar';
 
@@ -22,8 +23,9 @@ export default function index() {
   return (
     <Loader loaded={loaded}>
       <MenuBar name="Ruddha" />
-      <div></div>
-      <div className="px-3 md:px-10 min-h-full">Add Report</div>
+      <div className="px-3 md:px-10 min-h-full">
+        <AddReport />
+      </div>
       <Footer />
     </Loader>
   );
