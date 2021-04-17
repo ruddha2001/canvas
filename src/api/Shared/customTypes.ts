@@ -1,6 +1,6 @@
 export type MoodRecord = {
-  dateTime: string;
-  currentMood: 'radiant' | 'happy' | 'average' | 'upset' | 'worst';
+  dateTime: number;
+  currentMood: 'elated' | 'happy' | 'neutral' | 'sad' | 'awful';
 };
 
 export type User = {
