@@ -80,7 +80,7 @@ export default function Feedback() {
         id="feedback-text"
       ></textarea>
       <p className="pt-3 md:pt-5 w-full text-2xl md:text-3xl text-center">
-        <button className="bg-base-primary text-white rounded-full px-5 md:px-6 py-2 md:py-3">Submit</button>
+        <button className="bg-base-primary text-white rounded-full px-5 md:px-6 py-2 md:py-3 mb-28">Submit</button>
       </p>
     </div>
   );
