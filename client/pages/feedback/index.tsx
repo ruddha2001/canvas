@@ -27,7 +27,7 @@ export default function index() {
     <Loader loaded={loaded}>
       <MenuBar name={name} />
       <div></div>
-      <div className="px-3 md:px-10 min-h-full">
+      <div className="px-3 md:px-10 min-h-full overflow-auto">
         <Feedback />
       </div>
       <Footer />

@@ -31,7 +31,7 @@ export default function index() {
         <MenuBar name={name} />
         <div></div>
         <div>
-          <div className="grid grid-cols-12 w-full px-3 md:px-10 min-h-full">
+          <div className="grid grid-cols-12 w-full px-3 md:px-10 min-h-full overflow-auto">
             <Graph />
             <AddReportPanel />
           </div>
