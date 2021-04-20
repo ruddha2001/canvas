@@ -5,7 +5,7 @@ import { HomeRounded } from '@material-ui/icons';
 
 export default function AccountMenu(props) {
   const menuItems = [
-    ['Home', <HomeRounded />],
+    // ['Home', <HomeRounded />],
     ['Feedback', <ChatIcon />],
     ['Log Out', <ExitToAppIcon />],
   ];
