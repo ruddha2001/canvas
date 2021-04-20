@@ -1,15 +1,20 @@
 import React from 'react';
 import ChatIcon from '@material-ui/icons/Chat';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { HomeRounded } from '@material-ui/icons';
 
 export default function AccountMenu(props) {
   const menuItems = [
+    ['Home', <HomeRounded />],
     ['Feedback', <ChatIcon />],
     ['Log Out', <ExitToAppIcon />],
   ];
   const handleOnClickAccountMenuItem = (event, item) => {
     event.preventDefault();
     switch (item) {
+      case 'Home':
+        window.location.replace('/dashboard');
+        break;
       case 'Log Out':
         window.localStorage.setItem('token', '');
         window.localStorage.setItem('name', '');
