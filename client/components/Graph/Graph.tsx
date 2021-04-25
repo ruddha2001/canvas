@@ -13,6 +13,7 @@ export default function Graph(props) {
   const [datapointArray, setDatapointArray] = useState([]);
   const [init, setInit] = useState(true);
   if (props.data && init) {
+    props.data.reverse();
     let tempArray = [];
     let datapointTempArray = [];
     console.log(props.data);

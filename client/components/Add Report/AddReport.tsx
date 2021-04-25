@@ -56,11 +56,16 @@ export default function Feedback() {
   });
   async function handleOnSubmit() {
     try {
+      if (selected === 'Crisis') {
+        document.getElementById('dialog-text').innerHTML =
+          'We are so sorry to hear that you are having a crisis.<br/>Please contact AASRA at <a href="http://www.aasra.info/" style="cursor:pointer">http://www.aasra.info/</a><br/><br/>Stay safe. We are there with you.';
+        return document.getElementsByTagName('dialog')[0].showModal();
+      }
       axios
         .post(
           `${BASE_URL}/api/mood/add`,
           {
-            mood: selected.toLowerCase,
+            mood: selected.toLowerCase(),
             text: (document.getElementById('feedback-text') as HTMLInputElement).value,
           },
           {
@@ -71,7 +76,6 @@ export default function Feedback() {
         )
         .then(_ => {
           console.log(_.data);
-          document.getElementsByTagName('dialog')[0].showModal();
           setButtonText('Processing');
         });
     } catch (error) {
@@ -121,7 +125,7 @@ export default function Feedback() {
       </div>
       <dialog>
         <div className="p-10">
-          <p>Your mood report has been addedd successfully.</p>
+          <p id="dialog-text">Your mood report has been addedd successfully.</p>
           <br />
           <button
             className="border border-base-primary bg-base-primary text-white p-2 text-center block mx-auto"
