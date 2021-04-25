@@ -14,7 +14,7 @@ export const moodRouteHandler = () => {
 
 const addMood = async (req: Request, res: Response) => {
   try {
-    await addNewMood(req.body.mood, res.locals.user.email);
+    await addNewMood(req.body.mood, req.body.text, res.locals.user.email);
     res.json({ success: true, message: 'New mood has been added.' });
   } catch (error) {
     LoggerInstance.error(error);
