@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
-export default function Graph() {
+export default function Graph(props) {
+  const dayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const moodMap = new Map();
+  moodMap.set('elated', 5);
+  moodMap.set('happy', 4);
+  moodMap.set('neutral', 3);
+  moodMap.set('sad', 2);
+  moodMap.set('awful', 1);
+  const [labelArray, setLabelArray] = useState([]);
+  const [datapointArray, setDatapointArray] = useState([]);
+  const [init, setInit] = useState(true);
+  if (props.data && init) {
+    let tempArray = [];
+    let datapointTempArray = [];
+    console.log(props.data);
+    props.data.forEach(element => {
+      tempArray.push(dayArray[new Date(element.dateTime).getDay()]);
+      datapointTempArray.push(moodMap.get(element.currentMood) || 0);
+    });
+    setLabelArray(tempArray);
+    setDatapointArray(datapointTempArray);
+    setInit(false);
+  }
   const data = {
-    labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    labels: labelArray,
     datasets: [
       {
         label: 'My Mood',
@@ -24,7 +46,7 @@ export default function Graph() {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [1, 1, 3, 2, 4, 5, 1],
+        data: datapointArray,
       },
     ],
   };

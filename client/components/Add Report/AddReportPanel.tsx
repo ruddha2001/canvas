@@ -6,7 +6,7 @@ export default function AddReportPanel() {
 
   useEffect(() => {
     const width = window.innerHeight;
-    if (width < 900) setFontSize(30);
+    if (width < 800) setFontSize(30);
     else if (width < 730) setFontSize(20);
   });
   return (
