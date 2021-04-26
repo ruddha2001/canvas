@@ -6,7 +6,7 @@ import { generateFileBuffer } from './controller';
 const router = Router();
 
 export const reportRouteHandler = () => {
-  router.get('/generate', generateReport);
+  router.get('/generate', userAuthMiddleware, generateReport);
 
   return router;
 };
@@ -15,7 +15,7 @@ const generateReport = async (req: Request, res: Response) => {
   try {
     const buffer = await generateFileBuffer(
       req.query.format === 'html' ? 'html' : 'pdf',
-      'ruddha.mine@gmail.com',
+      res.locals.user.email,
       parseInt(req.query.from as string),
       parseInt(req.query.to as string),
     );
