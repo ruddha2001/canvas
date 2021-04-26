@@ -31,7 +31,7 @@ export const generateFileBuffer = async (
     message ? `<br/>The user wrote a message for you: ${message}` : ``
   }`;
   if (recepient) {
-    sendMail(mailBody, email);
+    sendMail(mailBody, recepient);
   }
 
   if (format === 'html') {
@@ -69,7 +69,7 @@ const sendMail = async (body: string, email: string) => {
         ToAddresses: [email],
       },
       FromEmailAddress: `Canvas <canvas@aniruddha.net>`,
-      ReplyToAddresses: ['technical@srmkzilla.net'],
+      ReplyToAddresses: ['canvas@aniruddha.net'],
     })
     .promise();
   await mailRequest;

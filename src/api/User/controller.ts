@@ -70,3 +70,12 @@ export const generateJwt = (email: string) => {
 export const verifyJwt = (token: string) => {
   return verify(token, process.env.JWT_SECRET);
 };
+
+export const addFeedback = async (email: string, text: string, choice: string) => {
+  let data;
+  if (choice === 'yes') {
+    data.email = email;
+  }
+  data.text = text;
+  await (await database()).collection('feedback').insertOne(data);
+};
