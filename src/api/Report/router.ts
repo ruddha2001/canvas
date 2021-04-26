@@ -1,21 +1,22 @@
 import { Request, Response, Router } from 'express';
 import LoggerInstance from '../../loaders/logger';
-import { userAuthMiddleware } from '../Shared/middlewares/userAuthMiddleware';
+import { verifyJwt } from '../User/controller';
 import { generateFileBuffer } from './controller';
 
 const router = Router();
 
 export const reportRouteHandler = () => {
-  router.get('/generate', userAuthMiddleware, generateReport);
+  router.get('/generate', generateReport);
 
   return router;
 };
 
 const generateReport = async (req: Request, res: Response) => {
   try {
+    const { email } = verifyJwt(req.query.token as string) as any;
     const buffer = await generateFileBuffer(
       req.query.format === 'html' ? 'html' : 'pdf',
-      res.locals.user.email,
+      email,
       parseInt(req.query.from as string),
       parseInt(req.query.to as string),
     );

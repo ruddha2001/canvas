@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
-import GenerateDialog from './GenerateDialog';
 
 export default function GenerateReport() {
   const [feedbackRow, setFeedbackRow] = useState(4);
@@ -15,20 +14,33 @@ export default function GenerateReport() {
       <div className="pt-8 text-base md:text-xl">
         <p className="text-3xl md:text-5xl pb-6 md:pb-10">Take a note of how you have been keeping</p>
         <p className="text-xl md:text-2xl pb-3 md:pb-5">
-          Time Period <FontAwesomeIcon icon={faQuestionCircle} />
+          Time Period{' '}
+          <FontAwesomeIcon
+            icon={faQuestionCircle}
+            title="The time period in between which you want the mood records."
+          />
         </p>
-        <input type="date" className="border border-black rounded-3xl resize-none p-2 mb-3 md:mb-8 inline-block" />
+        <input
+          type="date"
+          className="border border-black rounded-3xl resize-none p-2 mb-3 md:mb-8 inline-block"
+          id="from-date"
+        />
         <span className="block md:inline-block mx-6 mb-3 md:mb-5">to</span>
-        <input type="date" className="border border-black rounded-3xl resize-none p-2 mb-3 md:mb-8 inline-block" />
+        <input
+          type="date"
+          className="border border-black rounded-3xl resize-none p-2 mb-3 md:mb-8 inline-block"
+          id="to-date"
+        />
         <p className="text-xl md:text-2xl pb-3 md:pb-5">
-          File Format <FontAwesomeIcon icon={faQuestionCircle} />
+          File Format <FontAwesomeIcon icon={faQuestionCircle} title="The format of the file to be generated." />
         </p>
         <select className="border border-black rounded-3xl resize-none p-2 bg-white text-base md:text-xl px-6 mb-3 md:mb-8">
           <option value="html">HTML</option>
           <option value="pdf">PDF</option>
         </select>
         <p className="text-xl md:text-2xl pb-3 md:pb-5">
-          Email Address <FontAwesomeIcon icon={faQuestionCircle} />
+          Email Address{' '}
+          <FontAwesomeIcon icon={faQuestionCircle} title="The email address to where the report is to be sent." />
         </p>
         <textarea
           className="border border-black w-full rounded-3xl resize-none p-2 mb-3 md:mb-8"
@@ -37,7 +49,7 @@ export default function GenerateReport() {
           id="feedback-text"
         ></textarea>
         <p className="text-xl md:text-2xl pb-3 md:pb-5">
-          Email Message <FontAwesomeIcon icon={faQuestionCircle} />
+          Email Message <FontAwesomeIcon icon={faQuestionCircle} title="The message that should accompany the email." />
         </p>
         <textarea
           className="border border-black w-full rounded-3xl resize-none p-2 mb-3 md:mb-8"
@@ -49,6 +61,11 @@ export default function GenerateReport() {
           <button
             className="bg-base-primary text-white rounded-full px-5 md:px-6 py-2 md:py-3 mb-28"
             onClick={() => {
+              const fromDate = new Date((document.getElementById('from-date') as HTMLInputElement).value);
+              const fromDateEpoch = fromDate.getTime() + fromDate.getTimezoneOffset() * 60 * 1000;
+              const toDate = new Date((document.getElementById('to-date') as HTMLInputElement).value);
+              const toDateEpoch = toDate.getTime() + toDate.getTimezoneOffset() * 60 * 1000;
+              console.log(fromDateEpoch, toDateEpoch);
               document.getElementsByTagName('dialog')[0].showModal();
             }}
           >
