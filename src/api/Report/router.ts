@@ -17,8 +17,10 @@ const generateReport = async (req: Request, res: Response) => {
     const buffer = await generateFileBuffer(
       req.query.format === 'html' ? 'html' : 'pdf',
       email,
+      req.query.message as string,
       parseInt(req.query.from as string),
       parseInt(req.query.to as string),
+      req.query.recepient as string,
     );
     res.setHeader('Content-Type', req.query.format === 'html' ? 'text/html' : 'application/pdf');
     res.end(buffer);

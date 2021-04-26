@@ -34,7 +34,10 @@ export default function GenerateReport() {
         <p className="text-xl md:text-2xl pb-3 md:pb-5">
           File Format <FontAwesomeIcon icon={faQuestionCircle} title="The format of the file to be generated." />
         </p>
-        <select className="border border-black rounded-3xl resize-none p-2 bg-white text-base md:text-xl px-6 mb-3 md:mb-8">
+        <select
+          className="border border-black rounded-3xl resize-none p-2 bg-white text-base md:text-xl px-6 mb-3 md:mb-8"
+          id="format"
+        >
           <option value="html">HTML</option>
           <option value="pdf">PDF</option>
         </select>
@@ -65,7 +68,13 @@ export default function GenerateReport() {
               const fromDateEpoch = fromDate.getTime() + fromDate.getTimezoneOffset() * 60 * 1000;
               const toDate = new Date((document.getElementById('to-date') as HTMLInputElement).value);
               const toDateEpoch = toDate.getTime() + toDate.getTimezoneOffset() * 60 * 1000;
-              console.log(fromDateEpoch, toDateEpoch);
+              const format = (document.getElementById('format') as HTMLInputElement).value;
+              const tab = window.open(
+                `https://canvas-api.aniruddha.net/api/report/generate?format=${format}&from=${fromDateEpoch}&to=${toDateEpoch}&token=${window.localStorage.getItem(
+                  'token',
+                )}`,
+              );
+              tab.focus();
               document.getElementsByTagName('dialog')[0].showModal();
             }}
           >
