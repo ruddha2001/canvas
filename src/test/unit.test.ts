@@ -22,7 +22,7 @@ const expectThrowsAsync = async (method: Function, params: any[], message?: stri
   }
 };
 
-describe('Mood controller', () => {
+describe('Controller Testing', () => {
   it('Add an invalid new mood', async () => {
     await expectThrowsAsync(addNewMood, ['elated', '', 'sample@mail.com']);
   });
