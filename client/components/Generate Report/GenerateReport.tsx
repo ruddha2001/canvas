@@ -49,7 +49,7 @@ export default function GenerateReport() {
           className="border border-black w-full rounded-3xl resize-none p-2 mb-3 md:mb-8"
           rows={1}
           name="feedback-text"
-          id="feedback-text"
+          id="feedback-email"
         ></textarea>
         <p className="text-xl md:text-2xl pb-3 md:pb-5">
           Email Message <FontAwesomeIcon icon={faQuestionCircle} title="The message that should accompany the email." />
@@ -58,7 +58,7 @@ export default function GenerateReport() {
           className="border border-black w-full rounded-3xl resize-none p-2 mb-3 md:mb-8"
           rows={feedbackRow}
           name="feedback-text"
-          id="feedback-text"
+          id="feedback-message"
         ></textarea>
         <p className="pt-3 md:pt-5 w-full text-2xl md:text-3xl text-center">
           <button
@@ -72,7 +72,9 @@ export default function GenerateReport() {
               const tab = window.open(
                 `https://canvas-api.aniruddha.net/api/report/generate?format=${format}&from=${fromDateEpoch}&to=${toDateEpoch}&token=${window.localStorage.getItem(
                   'token',
-                )}`,
+                )}&recepient=${(document.getElementById('feedback-email') as HTMLInputElement).value}&message=${
+                  (document.getElementById('feedback-message') as HTMLInputElement).value
+                }`,
               );
               tab.focus();
               document.getElementsByTagName('dialog')[0].showModal();

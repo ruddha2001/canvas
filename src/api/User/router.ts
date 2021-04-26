@@ -8,7 +8,7 @@ const router = Router();
 export const userRouteHandler = () => {
   router.get('/login', loginHandler);
   router.get('/authcode', authCodeHandler);
-  router.get('/feedback', userAuthMiddleware, feedbackHandler);
+  router.post('/feedback', userAuthMiddleware, feedbackHandler);
   router.post('/verify', jwtVerifyHandler);
 
   return router;

@@ -61,6 +61,7 @@ export default function Feedback() {
           'We are so sorry to hear that you are having a crisis.<br/>Please contact AASRA at <a href="http://www.aasra.info/" style="cursor:pointer">http://www.aasra.info/</a><br/><br/>Stay safe. We are there with you.';
         return document.getElementsByTagName('dialog')[0].showModal();
       }
+      setButtonText('Processing');
       axios
         .post(
           `${BASE_URL}/api/mood/add`,
@@ -76,7 +77,7 @@ export default function Feedback() {
         )
         .then(_ => {
           console.log(_.data);
-          setButtonText('Processing');
+          document.getElementsByTagName('dialog')[0].showModal();
         });
     } catch (error) {
       console.error(error);
