@@ -72,7 +72,10 @@ export const verifyJwt = (token: string) => {
 };
 
 export const addFeedback = async (email: string, text: string, choice: string) => {
-  let data;
+  let data = {
+    text: '',
+    email: '',
+  };
   if (choice === 'yes') {
     data.email = email;
   }
